@@ -10,6 +10,6 @@
 		"node-fetch": "2"
 	},
 	"scripts": {
-		"start": "ts-node index.ts"
+		"dev": "ts-node index.ts"
 	}
 }
