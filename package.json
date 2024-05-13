@@ -1,0 +1,15 @@
+{
+	"devDependencies": {
+		"@types/node-fetch": "^2.6.11",
+		"fetch": "^1.1.0",
+		"node": "^20.13.1",
+		"ts-node": "^10.9.2",
+		"typescript": "^5.4.5"
+	},
+	"dependencies": {
+		"node-fetch": "2"
+	},
+	"scripts": {
+		"start": "ts-node index.ts"
+	}
+}
