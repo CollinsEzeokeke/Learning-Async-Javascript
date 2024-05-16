@@ -46,22 +46,28 @@ interface Pokemon {
 const getPokemonList = async (): Promise<PokemonList> => {
     const listResp = await fetch("https://pokeapi.co/api/v2/pokemon/?limit=20&offset=20");
     return await listResp.json();    
-}
+};
 
 const getPokemon = async (url: string): Promise<Pokemon> => {
     const dataResp = await fetch(url);
     return await dataResp.json();
-}
+};
 
+const firstPokemon = async (): Promise<Pokemon> => 
+    new Promise(async (resolve, reject) => {
+        try{
+            const list = await getPokemonList();
+            resolve(await getPokemon(list.results[0].url));
+        } catch (error) {
+            reject(error)
+        }
+    });
 
 (async () => {
     try{
-    // const listResponse = await fetch('https://pokeapi.co/api/v2/pokemon/?limit=20&offset=20');
-    // const list: PokemonList = await listResponse.json();
-    const list = await getPokemonList();
-    const pokemon = await getPokemon(list.results[0].url)
-        console.log(pokemon.name);
+    const pokemon = await firstPokemon();
+    console.log(pokemon.name);
     } catch (e) {
-        console.log(e) 
+    console.log(e) 
     }//for errors
 })();
