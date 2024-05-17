@@ -65,8 +65,11 @@ const firstPokemon = async (): Promise<Pokemon> =>
 
 (async () => {
     try{
-    const pokemon = await firstPokemon();
-    console.log(pokemon.name);
+    const list = await getPokemonList();
+    for(const listItem of list.results){
+        const pokemon = await getPokemon(listItem.url)
+        console.log(pokemon.name)
+    }
     } catch (e) {
     console.log(e) 
     }//for errors
